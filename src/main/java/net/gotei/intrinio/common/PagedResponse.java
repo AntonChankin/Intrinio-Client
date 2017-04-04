@@ -3,7 +3,7 @@ package net.gotei.intrinio.common;
 import java.math.BigDecimal;
 
 /**
- * Response to the most of queries.
+ * Response to the most of queries. Doc @see http://docs.intrinio.com/#paging
  */
 public class PagedResponse<T> {
     /** Total number of results.*/
