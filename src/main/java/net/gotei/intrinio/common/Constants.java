@@ -4,6 +4,8 @@ package net.gotei.intrinio.common;
  * Constant values common for all API calls.
  */
 public class Constants {
+    private static final String BASE_URL = "https://api.intrinio.com";
+
     // Paging Limits
     private static final int pricesEndpointLimit = 50000;
     private static final int historical_dataEndpointLimit = 50000;
@@ -19,4 +21,5 @@ public class Constants {
     private static final int news_sector_sentimentsEndpointLimit = 100;
     private static final int fileDownloadEndpointLimit = 10000;
     private static final int othersEndpointLimit = 250;
+
 }
