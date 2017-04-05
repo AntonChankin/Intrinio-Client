@@ -4,7 +4,8 @@ package net.gotei.intrinio.common;
  * Constant values common for all API calls.
  */
 public class Constants {
-    private static final String BASE_URL = "https://api.intrinio.com";
+    private static final String BASE_URL = "api.intrinio.com";
+    private static final String HISTORICAL_PATH = "/usage/historical";
 
     // Paging Limits
     private static final int pricesEndpointLimit = 50000;
@@ -22,4 +23,11 @@ public class Constants {
     private static final int fileDownloadEndpointLimit = 10000;
     private static final int othersEndpointLimit = 250;
 
+    public static String getBaseUrl() {
+        return BASE_URL;
+    }
+
+    public static String getHistoricalPath() {
+        return HISTORICAL_PATH;
+    }
 }
