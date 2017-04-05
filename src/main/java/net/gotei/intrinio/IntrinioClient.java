@@ -26,14 +26,15 @@ public class IntrinioClient {
         Map<String,String> param = new HashMap<String, String>(1);
         param.put("access_code",access_code);
         PagedResponse<HistoricalCell> pagedResult = connector.getPagedResult(Constants.getHistoricalPath(),param,HistoricalCell.class);
-        Collections.addAll(cells, pagedResult.getData());
-        int totalPages = pagedResult.getTotal_pages().intValue();
-        for (int page = 2; page < totalPages; page++) {
-            param.put("page_number", String.valueOf(page));
-            pagedResult = connector.getPagedResult(Constants.getHistoricalPath(),param,HistoricalCell.class);
+        if (pagedResult.getResult_count() != null && pagedResult.getResult_count().intValue() > 0) {
             Collections.addAll(cells, pagedResult.getData());
+            int totalPages = pagedResult.getTotal_pages().intValue();
+            for (int page = 2; page < totalPages; page++) {
+                param.put("page_number", String.valueOf(page));
+                pagedResult = connector.getPagedResult(Constants.getHistoricalPath(),param,HistoricalCell.class);
+                Collections.addAll(cells, pagedResult.getData());
+            }
         }
         return cells;
     }
-    
 }

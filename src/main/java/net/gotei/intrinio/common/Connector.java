@@ -76,9 +76,7 @@ public class Connector {
         String inputStr;
         while ((inputStr = streamReader.readLine()) != null)
             responseStrBuilder.append(inputStr);
-        Gson gson = new Gson();
-        JsonElement element = gson.toJsonTree(responseStrBuilder.toString());
-        JsonObject object = element.getAsJsonObject();
+        JsonObject object = new JsonParser().parse(responseStrBuilder.toString()).getAsJsonObject();
         return object;
     }
 }
