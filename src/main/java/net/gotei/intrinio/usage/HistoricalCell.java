@@ -1,12 +1,14 @@
 package net.gotei.intrinio.usage;
 
+import net.gotei.intrinio.common.Result;
+
 import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
  * Element of data array for Today’s current usage and limit information for the given access code request.
  */
-public class HistoricalCell {
+public class HistoricalCell implements Result {
     private String date;
     private BigDecimal calls;
 
