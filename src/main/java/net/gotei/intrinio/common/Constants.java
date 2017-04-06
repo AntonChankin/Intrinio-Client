@@ -7,6 +7,7 @@ public class Constants {
     private static final String BASE_URL = "api.intrinio.com";
     private static final String HISTORICAL_PATH = "/usage/historical";
     private static final String ACCESS_LIMITS_PATH = "/usage/access";
+    private static final String CURRENT_LIMITS_PATH = "/usage/current";
 
     // Paging Limits
     private static final int pricesEndpointLimit = 50000;
@@ -34,5 +35,9 @@ public class Constants {
 
     public static String getAccessLimitsPath() {
         return ACCESS_LIMITS_PATH;
+    }
+
+    public static String getCurrentLimitsPath() {
+        return CURRENT_LIMITS_PATH;
     }
 }

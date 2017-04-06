@@ -5,6 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.gotei.intrinio.usage.AccessLimits;
+import net.gotei.intrinio.usage.CurrentLimit;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,4 +50,16 @@ public class Extractor {
         return limits;
     }
 
+    public List<CurrentLimit> getCurrentUsage(String access_code) {
+        List<CurrentLimit> limits = new ArrayList<CurrentLimit>();
+        Gson gson = new Gson();
+        Map<String, String> params = new HashMap<String, String>(1);
+        params.put("access_code",access_code);
+        JsonArray array = connector.getContent(Constants.getCurrentLimitsPath(), params).getAsJsonArray();
+        for (JsonElement element : array) {
+            CurrentLimit limit = gson.fromJson(element,CurrentLimit.class);
+            limits.add(limit);
+        }
+        return limits;
+    }
 }

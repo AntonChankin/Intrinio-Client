@@ -5,6 +5,7 @@ import net.gotei.intrinio.common.Constants;
 import net.gotei.intrinio.common.Extractor;
 import net.gotei.intrinio.common.PagedResponse;
 import net.gotei.intrinio.usage.AccessLimits;
+import net.gotei.intrinio.usage.CurrentLimit;
 import net.gotei.intrinio.usage.HistoricalCell;
 
 import java.util.*;
@@ -42,5 +43,9 @@ public class IntrinioClient {
 
     public List<AccessLimits> getAccessLimits(){
         return extractor.getAccessLimits();
+    }
+
+    public List<CurrentLimit> getCurrentUsage(String access_code) {
+        return extractor.getCurrentUsage(access_code);
     }
 }
