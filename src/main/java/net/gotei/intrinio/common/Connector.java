@@ -60,9 +60,9 @@ public class Connector {
                 object = getJsonFromStream(response.getEntity().getContent());
             }
         } catch (URISyntaxException e) {
-            e.printStackTrace();
+            e.printStackTrace(); //TODO: Switch to log4j #11
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace();//TODO: Switch to log4j #11
         }
         return object;
     }
