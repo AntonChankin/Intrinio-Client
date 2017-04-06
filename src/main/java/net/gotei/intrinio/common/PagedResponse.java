@@ -60,4 +60,14 @@ public class PagedResponse<T> {
     public void setData(List<T> data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "PagedResponse{" +
+                "result_count=" + result_count +
+                ", page_size=" + page_size +
+                ", current_page=" + current_page +
+                ", total_pages=" + total_pages +
+                '}';
+    }
 }
