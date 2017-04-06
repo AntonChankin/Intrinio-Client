@@ -38,10 +38,10 @@ public class Connector {
                 .build();
     }
 
-    public <T extends Result> PagedResponse<T> getPagedResult(String path, Map<String, String> queryParams, Class<T> type) {
+    public JsonObject getContent(String path, Map<String, String> queryParams){
+        JsonObject object = null;
         URIBuilder builder = new URIBuilder();
-        List<T> answer = new ArrayList<T>();
-        PagedResponse<T> pagedResponse = new PagedResponse<T>();
+
         builder.setScheme("https").setHost(Constants.getBaseUrl()).setPath(path);
         for (String name : queryParams.keySet()){
             builder.addParameter(name,queryParams.get(name));
@@ -50,23 +50,14 @@ public class Connector {
             HttpGet request = new HttpGet(builder.build());
             HttpResponse response = httpclient.execute(request);
             if (response.getStatusLine().getStatusCode() == ResponseCodes.OK.getCode()){
-                Gson gson = new Gson();
-                JsonObject root = getJsonFromStream(response.getEntity().getContent());
-                pagedResponse.setCurrent_page(root.get("current_page").getAsBigDecimal());
-                pagedResponse.setResult_count(root.get("result_count").getAsBigDecimal());
-                pagedResponse.setPage_size(root.get("page_size").getAsBigDecimal());
-                pagedResponse.setTotal_pages(root.get("total_pages").getAsBigDecimal());
-                JsonArray data = root.getAsJsonArray("data");
-                for (JsonElement object : data){
-                    answer.add(gson.fromJson(object, type));
-                }
+                object = getJsonFromStream(response.getEntity().getContent());
             }
         } catch (URISyntaxException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return pagedResponse;
+        return object;
     }
 
     private static JsonObject getJsonFromStream(InputStream stream) throws IOException {
