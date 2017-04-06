@@ -4,6 +4,7 @@ import net.gotei.intrinio.common.Connector;
 import net.gotei.intrinio.common.Constants;
 import net.gotei.intrinio.common.Extractor;
 import net.gotei.intrinio.common.PagedResponse;
+import net.gotei.intrinio.usage.AccessLimits;
 import net.gotei.intrinio.usage.HistoricalCell;
 
 import java.util.*;
@@ -37,5 +38,9 @@ public class IntrinioClient {
             }
         }
         return cells;
+    }
+
+    public List<AccessLimits> getAccessLimits(){
+        return extractor.getAccessLimits();
     }
 }

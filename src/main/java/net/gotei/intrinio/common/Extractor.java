@@ -4,8 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import net.gotei.intrinio.usage.AccessLimits;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +26,7 @@ public class Extractor {
         PagedResponse<T> pagedResponse = new PagedResponse<T>();
 
         Gson gson = new Gson();
-        JsonObject root = connector.getContent(path, queryParams);
+        JsonObject root = connector.getContent(path, queryParams).getAsJsonObject();
         pagedResponse.setCurrent_page(root.get("current_page").getAsBigDecimal());
         pagedResponse.setResult_count(root.get("result_count").getAsBigDecimal());
         pagedResponse.setPage_size(root.get("page_size").getAsBigDecimal());
@@ -36,5 +38,15 @@ public class Extractor {
         return pagedResponse;
     }
 
+    public List<AccessLimits> getAccessLimits(){
+        List<AccessLimits> limits = new ArrayList<AccessLimits>();
+        Gson gson = new Gson();
+        JsonArray array = connector.getContent(Constants.getAccessLimitsPath(), new HashMap<String, String>(0)).getAsJsonArray();
+        for (JsonElement element : array) {
+            AccessLimits limit = gson.fromJson(element,AccessLimits.class);
+            limits.add(limit);
+        }
+        return limits;
+    }
 
 }

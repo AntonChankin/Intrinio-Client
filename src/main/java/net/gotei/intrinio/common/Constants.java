@@ -6,6 +6,7 @@ package net.gotei.intrinio.common;
 public class Constants {
     private static final String BASE_URL = "api.intrinio.com";
     private static final String HISTORICAL_PATH = "/usage/historical";
+    private static final String ACCESS_LIMITS_PATH = "/usage/access";
 
     // Paging Limits
     private static final int pricesEndpointLimit = 50000;
@@ -29,5 +30,9 @@ public class Constants {
 
     public static String getHistoricalPath() {
         return HISTORICAL_PATH;
+    }
+
+    public static String getAccessLimitsPath() {
+        return ACCESS_LIMITS_PATH;
     }
 }

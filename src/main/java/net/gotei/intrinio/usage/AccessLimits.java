@@ -6,11 +6,11 @@ import java.util.Objects;
 /**
  * GET: /usage/access response element
  */
-public class AccessCode {
+public class AccessLimits {
     private String access_code;
     private BigDecimal daily_limit;
 
-    public AccessCode() {
+    public AccessLimits() {
     }
 
     public String getAccess_code() {
@@ -32,8 +32,8 @@ public class AccessCode {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof AccessCode)) return false;
-        AccessCode that = (AccessCode) o;
+        if (!(o instanceof AccessLimits)) return false;
+        AccessLimits that = (AccessLimits) o;
         return Objects.equals(access_code, that.access_code) &&
                 Objects.equals(daily_limit, that.daily_limit);
     }
@@ -45,7 +45,7 @@ public class AccessCode {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("AccessCode{");
+        final StringBuilder sb = new StringBuilder("AccessLimits{");
         sb.append("access_code='").append(access_code).append('\'');
         sb.append(", daily_limit=").append(daily_limit);
         sb.append('}');

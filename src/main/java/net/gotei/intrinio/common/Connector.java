@@ -38,8 +38,8 @@ public class Connector {
                 .build();
     }
 
-    public JsonObject getContent(String path, Map<String, String> queryParams){
-        JsonObject object = null;
+    public JsonElement getContent(String path, Map<String, String> queryParams){
+        JsonElement object = null;
         URIBuilder builder = new URIBuilder();
 
         builder.setScheme("https").setHost(Constants.getBaseUrl()).setPath(path);
@@ -60,14 +60,14 @@ public class Connector {
         return object;
     }
 
-    private static JsonObject getJsonFromStream(InputStream stream) throws IOException {
+    private static JsonElement getJsonFromStream(InputStream stream) throws IOException {
         BufferedReader streamReader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
         StringBuilder responseStrBuilder = new StringBuilder();
 
         String inputStr;
         while ((inputStr = streamReader.readLine()) != null)
             responseStrBuilder.append(inputStr);
-        JsonObject object = new JsonParser().parse(responseStrBuilder.toString()).getAsJsonObject();
+        JsonElement object = new JsonParser().parse(responseStrBuilder.toString());
         return object;
     }
 }
