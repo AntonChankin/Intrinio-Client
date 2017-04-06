@@ -8,6 +8,8 @@ import net.gotei.intrinio.master.Security;
 import net.gotei.intrinio.usage.AccessLimits;
 import net.gotei.intrinio.usage.CurrentLimit;
 import net.gotei.intrinio.usage.HistoricalCell;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
@@ -17,6 +19,7 @@ import java.util.*;
  * @version 0.0.1
  */
 public class IntrinioClient {
+    private static final Logger LOGGER = LogManager.getLogger(IntrinioClient.class);
     private final String USERNAME;
     private final String PASSWORD;
     private Extractor extractor;
