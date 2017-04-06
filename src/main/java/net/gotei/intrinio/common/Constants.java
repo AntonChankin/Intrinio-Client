@@ -9,7 +9,7 @@ public class Constants {
     private static final String ACCESS_LIMITS_PATH = "/usage/access";
     private static final String CURRENT_LIMITS_PATH = "/usage/current";
     private static final String COMPANY_MASTER_PATH = "/companies";
-
+    private static final String SECURITY_MASTER_PATH = "/securities";
 
     // Paging Limits
     private static final int pricesEndpointLimit = 50000;
@@ -45,5 +45,9 @@ public class Constants {
 
     public static String getCompanyMasterPath() {
         return COMPANY_MASTER_PATH;
+    }
+
+    public static String getSecurityMasterPath() {
+        return SECURITY_MASTER_PATH;
     }
 }

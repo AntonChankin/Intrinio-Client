@@ -4,6 +4,7 @@ import net.gotei.intrinio.common.Constants;
 import net.gotei.intrinio.common.Extractor;
 import net.gotei.intrinio.common.PagedResponse;
 import net.gotei.intrinio.master.Company;
+import net.gotei.intrinio.master.Security;
 import net.gotei.intrinio.usage.AccessLimits;
 import net.gotei.intrinio.usage.CurrentLimit;
 import net.gotei.intrinio.usage.HistoricalCell;
@@ -100,5 +101,39 @@ public class IntrinioClient {
         return companies;
     }
 
+    /**
+     * Returns the master list of all securities covered by the Intrinio Data Marketplace.
+     * @param query (optional, returns list of securities with compacted response values, if no query specified) - a string query search of security name or ticker symbol with the returned results being the relevant securities in compacted list format.
+     * @param identifier (optional, returns list of securities with compacted response values, if no identifier specified) - the identifier for the legal entity or a security associated with the company: TICKER SYMBOL | FIGI | OTHER IDENTIFIER
+     * @param exch_symbol (optional, returns list of all securities with compacted response values, if no query specified) - the Intrinio Stock Market Symbol, to specify the exchange for the list of securities: STOCK EXCHANGE IDENTIFIER
+     * @param us_only (optional, returns list of all US securities if true)
+     * @return list of all securities
+     */
+    public List<Security> getSecurities(String query, String identifier, String exch_symbol, boolean us_only ){
+        List<Security> securities = new ArrayList<Security>();
+        Map<String,String> param = new HashMap<String, String>(1);
+        if (query != null && !query.isEmpty()) {
+            param.put("query",query);
+        }
+        if (identifier != null && !identifier.isEmpty()) {
+            param.put("latest_filing_date",identifier);
+        }
+        if (exch_symbol != null && !exch_symbol.isEmpty()) {
+            param.put("exch_symbol",identifier);
+        }
+        if (us_only){
+            param.put("us_only","true");
+        }
+        PagedResponse<Security> pagedResult = extractor.getPagedResult(Constants.getSecurityMasterPath(),param,Security.class);
+        if (pagedResult.getResult_count() != null && pagedResult.getResult_count().intValue() > 0) {
+            securities.addAll(pagedResult.getData());
+            int totalPages = pagedResult.getTotal_pages().intValue();
+            for (int page = 2; page < totalPages; page++) {
+                param.put("page_number", String.valueOf(page));
+                pagedResult = extractor.getPagedResult(Constants.getSecurityMasterPath(),param,Security.class);
+                securities.addAll(pagedResult.getData());
+            }
+        }
+        return securities;
     }
 }
