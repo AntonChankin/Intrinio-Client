@@ -1,11 +1,13 @@
 package net.gotei.intrinio.master;
 
+import net.gotei.intrinio.common.Result;
+
 import java.util.Objects;
 
 /**
  * Security covered by the Intrinio Data Marketplace
  */
-public class Security {
+public class Security implements Result {
     /**  - the stock market ticker symbol associated with the companies common stock securities */
     private String ticker;
     /**  - the security description as provided by the exchange */

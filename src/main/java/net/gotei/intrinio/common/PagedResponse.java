@@ -1,6 +1,7 @@
 package net.gotei.intrinio.common;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Response to the most of queries. Doc @see http://docs.intrinio.com/#paging
@@ -15,7 +16,7 @@ public class PagedResponse<T> {
     /** Total number of pages in responce*/
     private BigDecimal total_pages;
     /** Payload */
-    private T[] data;
+    private List<T> data;
 
     public PagedResponse() {
     }
@@ -52,11 +53,11 @@ public class PagedResponse<T> {
         this.total_pages = total_pages;
     }
 
-    public T[] getData() {
+    public List<T> getData() {
         return data;
     }
 
-    public void setData(T[] data) {
+    public void setData(List<T> data) {
         this.data = data;
     }
 }

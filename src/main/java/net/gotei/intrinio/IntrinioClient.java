@@ -44,12 +44,12 @@ public class IntrinioClient {
         }
         PagedResponse<HistoricalCell> pagedResult = extractor.getPagedResult(Constants.getHistoricalPath(),param,HistoricalCell.class);
         if (pagedResult.getResult_count() != null && pagedResult.getResult_count().intValue() > 0) {
-            Collections.addAll(cells, pagedResult.getData());
+            cells.addAll(pagedResult.getData());
             int totalPages = pagedResult.getTotal_pages().intValue();
             for (int page = 2; page < totalPages; page++) {
                 param.put("page_number", String.valueOf(page));
                 pagedResult = extractor.getPagedResult(Constants.getHistoricalPath(),param,HistoricalCell.class);
-                Collections.addAll(cells, pagedResult.getData());
+                cells.addAll(pagedResult.getData());
             }
         }
         return cells;
@@ -89,13 +89,16 @@ public class IntrinioClient {
         }
         PagedResponse<Company> pagedResult = extractor.getPagedResult(Constants.getCompanyMasterPath(),param,Company.class);
         if (pagedResult.getResult_count() != null && pagedResult.getResult_count().intValue() > 0) {
-            Collections.addAll(companies, pagedResult.getData());
+            companies.addAll(pagedResult.getData());
             int totalPages = pagedResult.getTotal_pages().intValue();
             for (int page = 2; page < totalPages; page++) {
                 param.put("page_number", String.valueOf(page));
-                pagedResult = extractor.getPagedResult(Constants.getHistoricalPath(),param,Company.class);
-                Collections.addAll(companies, pagedResult.getData());
+                pagedResult = extractor.getPagedResult(Constants.getCompanyMasterPath(),param,Company.class);
+                companies.addAll(pagedResult.getData());
             }
         }
+        return companies;
+    }
+
     }
 }

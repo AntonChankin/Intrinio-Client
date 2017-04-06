@@ -8,10 +8,7 @@ import net.gotei.intrinio.master.Company;
 import net.gotei.intrinio.usage.AccessLimits;
 import net.gotei.intrinio.usage.CurrentLimit;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Extracts entities from JSON.
@@ -37,6 +34,7 @@ public class Extractor {
         for (JsonElement object : data){
             answer.add(gson.fromJson(object, type));
         }
+        pagedResponse.setData(answer);
         return pagedResponse;
     }
 
