@@ -1,11 +1,13 @@
 package net.gotei.intrinio.master;
 
+import net.gotei.intrinio.common.Result;
+
 import java.util.Objects;
 
 /**
  * Company covered by the Intrinio Data Marketplace.
  */
-public class Company {
+public class Company implements Result {
     /**  - the stock market ticker symbol associated with the companies common stock securities */
     private String ticker;
     /**  - the Central Index Key issued by the SEC, which is the unique identifier all company filings are issued under */

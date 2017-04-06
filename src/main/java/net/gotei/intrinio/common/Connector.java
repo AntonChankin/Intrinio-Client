@@ -21,6 +21,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * HTTP Connection Helper Class.
@@ -29,6 +30,12 @@ public class Connector {
     private HttpClient httpclient;
 
     public Connector(String USERNAME, String PASSWORD) {
+        if (Objects.isNull(USERNAME) || USERNAME.isEmpty()){
+            throw new IllegalArgumentException("USERNAME cannot be empty");
+        }
+        if (Objects.isNull(PASSWORD) || PASSWORD.isEmpty()){
+            throw new IllegalArgumentException("PASSWORD cannot be empty");
+        }
         CredentialsProvider provider = new BasicCredentialsProvider();
         UsernamePasswordCredentials credentials
                 = new UsernamePasswordCredentials(USERNAME, PASSWORD);

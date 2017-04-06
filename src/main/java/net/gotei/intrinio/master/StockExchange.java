@@ -1,11 +1,13 @@
 package net.gotei.intrinio.master;
 
+import net.gotei.intrinio.common.Result;
+
 import java.util.Objects;
 
 /**
  * Information on stock exchange covered by Intrinio.
  */
-public class StockExchange {
+public class StockExchange implements Result {
     /**  - the Intrinio symbol associated with the stock exchange */
     private String symbol;
     /**  - the MIC identifier for the stock exchange */

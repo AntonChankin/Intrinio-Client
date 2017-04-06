@@ -1,11 +1,13 @@
 package net.gotei.intrinio.master;
 
+import net.gotei.intrinio.common.Result;
+
 import java.util.Objects;
 
 /**
  *  Information on index covered by Intrinio. There are three distinct types of indices: Stock Market, SIC (Sector & Industry), and Economic.
  */
-public class Index {
+public class Index implements Result {
     /** - the Intrinio symbol associated with the index */
     private String symbol;
     /** - the index name */

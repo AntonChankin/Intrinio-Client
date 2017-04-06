@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import net.gotei.intrinio.master.Company;
 import net.gotei.intrinio.usage.AccessLimits;
 import net.gotei.intrinio.usage.CurrentLimit;
 

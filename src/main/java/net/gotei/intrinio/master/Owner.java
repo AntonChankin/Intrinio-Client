@@ -1,11 +1,13 @@
 package net.gotei.intrinio.master;
 
+import net.gotei.intrinio.common.Result;
+
 import java.util.Objects;
 
 /**
  *  Information on insider and institutional owner of securities covered by Intrinio.
  */
-public class Owner {
+public class Owner implements Result {
     /**  - the Central Index Key issued by the SEC, which is the unique identifier all owner filings */
     private String owner_cik;
     /**  - the name of the owner, either an institutional owner or an insider owner */
