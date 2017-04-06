@@ -7,6 +7,8 @@ import com.google.gson.JsonObject;
 import net.gotei.intrinio.master.Company;
 import net.gotei.intrinio.usage.AccessLimits;
 import net.gotei.intrinio.usage.CurrentLimit;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
@@ -14,6 +16,7 @@ import java.util.*;
  * Extracts entities from JSON.
  */
 public class Extractor {
+    private static final Logger LOGGER = LogManager.getLogger(Extractor.class);
     private Connector connector;
 
     public Extractor(String USERNAME, String PASSWORD) {
@@ -30,9 +33,12 @@ public class Extractor {
         pagedResponse.setResult_count(root.get("result_count").getAsBigDecimal());
         pagedResponse.setPage_size(root.get("page_size").getAsBigDecimal());
         pagedResponse.setTotal_pages(root.get("total_pages").getAsBigDecimal());
+        LOGGER.debug("Got paged response " + pagedResponse);
         JsonArray data = root.getAsJsonArray("data");
         for (JsonElement object : data){
-            answer.add(gson.fromJson(object, type));
+            T element = gson.fromJson(object, type);
+            answer.add(element);
+            LOGGER.debug("Data object is " + element);
         }
         pagedResponse.setData(answer);
         return pagedResponse;

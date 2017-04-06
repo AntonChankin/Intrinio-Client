@@ -41,6 +41,7 @@ public class IntrinioClient {
      * @return pairs date and usage
      */
     public List<HistoricalCell> getHistoricalUsage(String access_code){
+        LOGGER.info("Requesting Historical Usage for access code " + access_code);
         List<HistoricalCell> cells = new ArrayList<HistoricalCell>();
         Map<String,String> param = new HashMap<String, String>(1);
         if (access_code != null && !access_code.isEmpty()) {
@@ -64,6 +65,7 @@ public class IntrinioClient {
      * @return limits per access code
      */
     public List<AccessLimits> getAccessLimits(){
+        LOGGER.info("Requesting Access Limits");
         return extractor.getAccessLimits();
     }
 
@@ -73,6 +75,7 @@ public class IntrinioClient {
      * @return limits per access code
      */
     public List<CurrentLimit> getCurrentUsage(String access_code) {
+        LOGGER.info("Requesting Current usage");
         return extractor.getCurrentUsage(access_code);
     }
 
@@ -83,6 +86,7 @@ public class IntrinioClient {
      * @return list of companies
      */
     public List<Company> getCompanies(String query, String latest_filing_date ){
+        LOGGER.info("Requesting list of companies for query " + query + " and date " + latest_filing_date);
         List<Company> companies = new ArrayList<Company>();
         Map<String,String> param = new HashMap<String, String>(1);
         if (query != null && !query.isEmpty()) {
@@ -113,6 +117,7 @@ public class IntrinioClient {
      * @return list of all securities
      */
     public List<Security> getSecurities(String query, String identifier, String exch_symbol, boolean us_only ){
+        LOGGER.info("Requesting list of companies for query " + query + ", identifier " + identifier + " on exchange " + exch_symbol + " US Only = " + us_only);
         List<Security> securities = new ArrayList<Security>();
         Map<String,String> param = new HashMap<String, String>(1);
         if (query != null && !query.isEmpty()) {
@@ -138,5 +143,15 @@ public class IntrinioClient {
             }
         }
         return securities;
+    }
+
+    public static void main(String[] args) {
+        String USERNAME = "cf1f59ad6b2a2438715016d5ae886361";
+        String PASSWORD = "6c4577f27878943afb8d6bf938fef791";
+        IntrinioClient client = new IntrinioClient(USERNAME,PASSWORD);
+        for (Security security :
+                client.getSecurities(null, null, null, true)) {
+            System.out.println(security.toString());
+        }
     }
 }
