@@ -1,6 +1,6 @@
-package net.gotei.intrinio.master;
+package com.intrinio.master;
 
-import net.gotei.intrinio.common.Result;
+import com.intrinio.common.Result;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package net.gotei.intrinio.common;
+package com.intrinio.common;
 
 /**
  * Intrinio Subscriptions with it limits.

@@ -1,4 +1,4 @@
-package net.gotei.intrinio.usage;
+package com.intrinio.usage;
 
 /**
  * Access codes represent the data you are allowed to access. Each API call counts against a particular access code. The access codes correspond to data feeds.

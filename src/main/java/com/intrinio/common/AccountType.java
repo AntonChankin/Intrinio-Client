@@ -1,4 +1,4 @@
-package net.gotei.intrinio.common;
+package com.intrinio.common;
 
 /**
  * Intrinio Account type with limits. (resetting at midnight Eastern)

@@ -1,4 +1,4 @@
-package net.gotei.intrinio.common;
+package com.intrinio.common;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -13,7 +13,7 @@ public class PagedResponse<T> {
     private BigDecimal page_size;
     /** Current page number*/
     private BigDecimal current_page;
-    /** Total number of pages in responce*/
+    /** Total number of pages in response*/
     private BigDecimal total_pages;
     /** Payload */
     private List<T> data;

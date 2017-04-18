@@ -1,13 +1,13 @@
-package net.gotei.intrinio;
+package com.intrinio;
 
-import net.gotei.intrinio.common.Constants;
-import net.gotei.intrinio.common.Extractor;
-import net.gotei.intrinio.common.PagedResponse;
-import net.gotei.intrinio.master.Company;
-import net.gotei.intrinio.master.Security;
-import net.gotei.intrinio.usage.AccessLimits;
-import net.gotei.intrinio.usage.CurrentLimit;
-import net.gotei.intrinio.usage.HistoricalCell;
+import com.intrinio.common.Constants;
+import com.intrinio.common.Extractor;
+import com.intrinio.master.Company;
+import com.intrinio.usage.CurrentLimit;
+import com.intrinio.usage.HistoricalCell;
+import com.intrinio.common.PagedResponse;
+import com.intrinio.master.Security;
+import com.intrinio.usage.AccessLimits;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

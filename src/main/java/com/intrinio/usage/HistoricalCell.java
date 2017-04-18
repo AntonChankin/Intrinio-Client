@@ -1,6 +1,6 @@
-package net.gotei.intrinio.usage;
+package com.intrinio.usage;
 
-import net.gotei.intrinio.common.Result;
+import com.intrinio.common.Result;
 
 import java.math.BigDecimal;
 import java.util.Objects;

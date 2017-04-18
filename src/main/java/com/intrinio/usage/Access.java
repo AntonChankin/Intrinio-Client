@@ -1,4 +1,4 @@
-package net.gotei.intrinio.usage;
+package com.intrinio.usage;
 
 import java.math.BigDecimal;
 

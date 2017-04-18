@@ -1,4 +1,4 @@
-package net.gotei.intrinio.common;
+package com.intrinio.common;
 
 /**
  * Intrinio uses normal HTTP response codes to indicate the success or failure of an API request.
