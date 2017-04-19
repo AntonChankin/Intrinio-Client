@@ -15,6 +15,8 @@ public class PagedResponse<T> {
     private BigDecimal current_page;
     /** Total number of pages in response*/
     private BigDecimal total_pages;
+    /** */
+    private BigDecimal api_call_credits;
     /** Payload */
     private List<T> data;
 
@@ -61,13 +63,24 @@ public class PagedResponse<T> {
         this.data = data;
     }
 
+    public BigDecimal getApi_call_credits() {
+        return api_call_credits;
+    }
+
+    public void setApi_call_credits(BigDecimal api_call_credits) {
+        this.api_call_credits = api_call_credits;
+    }
+
     @Override
     public String toString() {
-        return "PagedResponse{" +
-                "result_count=" + result_count +
-                ", page_size=" + page_size +
-                ", current_page=" + current_page +
-                ", total_pages=" + total_pages +
-                '}';
+        final StringBuilder sb = new StringBuilder("PagedResponse{");
+        sb.append("result_count=").append(result_count);
+        sb.append(", page_size=").append(page_size);
+        sb.append(", current_page=").append(current_page);
+        sb.append(", total_pages=").append(total_pages);
+        sb.append(", api_call_credits=").append(api_call_credits);
+        sb.append(", data=").append(data);
+        sb.append('}');
+        return sb.toString();
     }
 }
