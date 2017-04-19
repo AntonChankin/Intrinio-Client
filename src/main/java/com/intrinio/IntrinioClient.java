@@ -85,7 +85,7 @@ public class IntrinioClient {
      * @param latest_filing_date a date value that returns the list of companies whose latest SEC filing was filed on or after this date: YYYY-MM-DD
      * @return list of companies
      */
-    public List<Company> getCompanies(String query, String latest_filing_date ){
+    public List<Company> getMasterCompanies(String query, String latest_filing_date ){
         LOGGER.info("Requesting list of companies for query " + query + " and date " + latest_filing_date);
         List<Company> companies = new ArrayList<Company>();
         Map<String,String> param = new HashMap<String, String>(1);
@@ -116,7 +116,7 @@ public class IntrinioClient {
      * @param us_only (optional, returns list of all US securities if true)
      * @return list of all securities
      */
-    public List<Security> getSecurities(String query, String identifier, String exch_symbol, boolean us_only ){
+    public List<Security> getMasterSecurities(String query, String identifier, String exch_symbol, boolean us_only ){
         LOGGER.info("Requesting list of companies for query " + query + ", identifier " + identifier + " on exchange " + exch_symbol + " US Only = " + us_only);
         List<Security> securities = new ArrayList<Security>();
         Map<String,String> param = new HashMap<String, String>(1);
@@ -150,7 +150,7 @@ public class IntrinioClient {
         String PASSWORD = "6c4577f27878943afb8d6bf938fef791";
         IntrinioClient client = new IntrinioClient(USERNAME,PASSWORD);
         for (Security security :
-                client.getSecurities(null, null, null, true)) {
+                client.getMasterSecurities(null, null, null, true)) {
             System.out.println(security.toString());
         }
     }
