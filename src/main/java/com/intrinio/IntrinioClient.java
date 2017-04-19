@@ -144,14 +144,4 @@ public class IntrinioClient {
         }
         return securities;
     }
-
-    public static void main(String[] args) {
-        String USERNAME = "cf1f59ad6b2a2438715016d5ae886361";
-        String PASSWORD = "6c4577f27878943afb8d6bf938fef791";
-        IntrinioClient client = new IntrinioClient(USERNAME,PASSWORD);
-        for (Security security :
-                client.getMasterSecurities(null, null, null, true)) {
-            System.out.println(security.toString());
-        }
-    }
 }
